@@ -75,18 +75,18 @@ export default function CategoryList() {
                                 : 'grid-rows-[0fr] opacity-0'
                         }`}>
                             <div className="overflow-hidden">
-                                <div className={`bg-gray-50 px-4 py-2 transform transition-transform duration-200 ${
+                                <ul className={`bg-gray-50 px-12 py-2 transform transition-transform duration-200 ${
                                     isActive ? 'translate-y-0' : '-translate-y-2'
-                                }`}>
+                                } list-disc `}>
                                     {category.options.map((item, index) => (
-                                        <div
+                                        <li
                                             key={index}
-                                            className="py-2 px-8 hover:bg-gray-100 cursor-pointer rounded transition-colors duration-150"
+                                            className="py-2 hover:bg-gray-100 cursor-pointer rounded transition-colors duration-150"
                                         >
-                                            ⦁ {item}
-                                        </div>
+                                            {item}
+                                        </li>
                                     ))}
-                                </div>
+                                </ul>
                             </div>
                         </div>
                     </div>

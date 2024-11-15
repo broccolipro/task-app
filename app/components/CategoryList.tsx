@@ -1,7 +1,7 @@
 "use client"
 
 import React, {useEffect, useRef, useState} from "react";
-import { ChevronDown, ChevronUp } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 import {FaPaintRoller} from "react-icons/fa";
 import {GiDoorHandle, GiWashingMachine} from "react-icons/gi";
 import {BiCabinet} from "react-icons/bi";
@@ -50,7 +50,10 @@ export default function CategoryList() {
                     <div
                         key={category.id}
                         className="border-b border-gray-200"
-                        ref={el => categoryRefs.current[category.id] = el}
+                        ref={el => {
+                            categoryRefs.current[category.id] = el;
+                            return void 0;
+                        }}
                     >
                         <button
                             onClick={() => toggleCategory(category.id)}

@@ -42,7 +42,7 @@ export default function CategoryList() {
         }
     }, [activeCategory]);
     return (
-        <div className="w-full max-w-md mx-auto">
+        <div className="w-full max-w-lg mx-auto">
             {items.map((category) => {
                 const isActive = activeCategory === category.id;
 
@@ -80,7 +80,7 @@ export default function CategoryList() {
                             <div className="overflow-hidden">
                                 <ul className={`bg-gray-50 px-12 py-2 transform transition-transform duration-200 ${
                                     isActive ? 'translate-y-0' : '-translate-y-2'
-                                } list-disc `}>
+                                } list-disc text-gray-600`}>
                                     {category.options.map((item, index) => (
                                         <li
                                             key={index}

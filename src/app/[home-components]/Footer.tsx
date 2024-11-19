@@ -16,7 +16,7 @@ export default function Footer() {
                 </div>
 
                 <p className="mt-4 md:mt-0 text-sm">
-                    © 2024 <font className='underline' >009.md</font> Все права защищены.
+                    © 2024 <u>009.md</u> Все права защищены.
                 </p>
             </div>
         </footer>

@@ -1,10 +1,13 @@
 import React from "react";
 
 
-export default function Logo() {
+export default function Logo({size}) {
     return (
-        <a href="/">
-            <img src="/logo-v3.png" alt="" className='w-16 aspect-auto'/>
-        </a>
+        <div className={`w-${size}`} >
+            <a href="/">
+                <img src="/logo-v3.png" alt=""/>
+            </a>
+        </div>
+
     )
 }

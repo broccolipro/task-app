@@ -9,7 +9,7 @@ export default function Footer() {
             <div
                 className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-gray-600 lg:w-8/12">
                 <div className="flex items-center space-x-4">
-                    <Logo/>
+                    <Logo size={16}/>
                     <span className="text-gray-300">|</span>
                     <Link href="#" className="hover:text-gray-800">О нас</Link>
                     <Link href="#" className="hover:text-gray-800">Контакты</Link>

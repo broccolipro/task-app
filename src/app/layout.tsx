@@ -6,6 +6,8 @@ import Header from "@/app/[home-components]/Header";
 import Drawer from "@/app/[home-components]/Drawer";
 import {RootProvider} from "@/shared/RootProvider";
 import {AntdRegistry} from "@ant-design/nextjs-registry";
+import Image from "next/image";
+import React from "react";
 
 const jura = Jura({
     subsets: ["cyrillic"],
@@ -35,18 +37,21 @@ export default function RootLayout({children,}: Readonly<{ children: React.React
         <body
             className={` ${nunito.variable}  antialiased bg-white`}
         >
-        <RootProvider>
-            <Drawer/>
+        <div className={'w-full h-full h-screen flex justify-center items-center'}>
+            <Image src={'/crying-cat.jpg'} alt={'Crying cat'} width={200} height={200}/>
+        </div>
+        {/*<RootProvider>*/}
+        {/*    <Drawer/>*/}
 
-            <div className="min-h-screen flex flex-col">
-                <Header/>
-                <main className="flex-grow bg-tbg">
-                    <AntdRegistry>{children}</AntdRegistry>
-                </main>
-                <Footer/>
-            </div>
+        {/*    <div className="min-h-screen flex flex-col">*/}
+        {/*        <Header/>*/}
+        {/*        <main className="flex-grow bg-tbg">*/}
+        {/*            <AntdRegistry>{children}</AntdRegistry>*/}
+        {/*        </main>*/}
+        {/*        <Footer/>*/}
+        {/*    </div>*/}
 
-        </RootProvider>
+        {/*</RootProvider>*/}
 
         </body>
         </html>

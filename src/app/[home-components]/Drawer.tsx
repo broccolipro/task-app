@@ -4,7 +4,7 @@ import React, {useContext, useState} from 'react'
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle, TransitionChild } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import {DrawerContext} from "@/shared/drawer/DrawerProvider";
-import Logo from "../../../public/Logo";
+import Logo from "./Logo";
 
 export default function Drawer() {
     const {open, setOpen} = useContext(DrawerContext)

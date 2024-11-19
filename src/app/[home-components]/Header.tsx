@@ -2,7 +2,7 @@
 import React, {useContext} from "react";
 import {Menu} from 'lucide-react';
 import {DrawerContext} from "@/shared/drawer/DrawerProvider";
-import Logo from "../../../public/Logo";
+import Logo from "./Logo";
 
 
 export default function Header() {

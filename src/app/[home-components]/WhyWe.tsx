@@ -32,7 +32,7 @@ export default function WhyWe() {
     )
 }
 
-const size = 100;
+const size = 90;
 const color = 'rgb(245,158,11)';
 
 const benefits = [

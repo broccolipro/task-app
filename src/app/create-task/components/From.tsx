@@ -1,22 +1,8 @@
-/*
-  This example requires some changes to your config:
-
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
-*/
 'use client'
 
 import {useRef, useState} from 'react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
-import { Field, Label, Switch } from '@headlessui/react'
+import { Field, Switch } from '@headlessui/react'
 
 export default function Form() {
     const [agreed, setAgreed] = useState(false)
@@ -176,7 +162,7 @@ export default function Form() {
                         }}
                         // disabled={agreed}
                         type="submit"
-                        className={`block w-full disabled:bg-tint-100 rounded-md bg-tint px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm lg:hover:bg-tint-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tint active:bg-tint-200`}
+                        className={`block w-full disabled:bg-tint-100 rounded-full bg-tint px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm lg:hover:bg-tint-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tint active:bg-tint-200`}
                     >
                         Заказать
                     </button>

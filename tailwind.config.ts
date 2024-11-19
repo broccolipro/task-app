@@ -16,6 +16,9 @@ export default {
         "tint-200": '#228d9b',
         tbg: '#fafafa'
       },
+      fontFamily: {
+        nunito: 'var(--font-nunito)'
+      }
     },
   },
   plugins: [

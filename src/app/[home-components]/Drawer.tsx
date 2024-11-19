@@ -4,6 +4,7 @@ import {useContext, useState} from 'react'
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle, TransitionChild } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import {DrawerContext} from "@/shared/drawer/DrawerProvider";
+import Logo from "../../../public/Logo";
 
 export default function Drawer() {
     const {open, setOpen} = useContext(DrawerContext)
@@ -17,7 +18,7 @@ export default function Drawer() {
 
             <div className="fixed inset-0 overflow-hidden">
                 <div className="absolute inset-0 overflow-hidden">
-                    <div className="pointer-events-none fixed inset-y-0 left-0 flex max-w-full pr-24">
+                    <div className="pointer-events-none fixed inset-y-0 left-0 flex max-w-full pr-44">
                         <DialogPanel
                             transition
                             className="pointer-events-auto relative w-screen max-w-md transform transition duration-500 ease-in-out data-[closed]:-translate-x-full sm:duration-700"
@@ -37,10 +38,16 @@ export default function Drawer() {
                             </TransitionChild>
                             <div className="flex h-full flex-col overflow-y-scroll bg-white py-6 shadow-xl">
                                 <div className="px-4 sm:px-6">
-                                    <DialogTitle className="text-base font-semibold text-gray-900">navigation menu</DialogTitle>
+                                    <DialogTitle className="text-base font-semibold text-gray-900">
+                                        <Logo/>
+                                    </DialogTitle>
                                 </div>
                                 <div className="relative mt-6 flex-1 px-4 sm:px-6">
-                                    Content goes here
+                                    Главная
+                                    <br/>
+                                    О нас
+                                    <br/>
+                                    Контакты
                                 </div>
                             </div>
                         </DialogPanel>

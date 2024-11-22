@@ -1,48 +1,53 @@
-import React from 'react';
-import WhyWe from "@/app/[home-components]/WhyWe";
-import CategoryList from "@/app/[home-components]/CategoryList";
-import Next from "@/app/[home-components]/Next";
-import Steps from "@/app/[home-components]/Steps";
-import Discount from "@/app/[home-components]/Discount";
-import Reviews from "@/app/[home-components]/Reviews";
+'use client'
 
-export default function Home() {
+import {useRouter} from "next/compat/router";
+import {useState} from "react";
+
+
+export default function () {
+    const router = useRouter();
+    const [value, setValue] = useState('')
 
     return (
-        <div className='lg:w-9/12 m-auto'>
-            <section className=' p-3 flex flex-col items-center'>
-                <p className='text-4xl break-words whitespace-normal text-center font-nunito font-[800] text-gray-600'>
-                    Чем вам помочь?</p>
-                <p className='text-center mt-1 text-2sm leading-5 text-gray-600'>
-                    Профессиональные услуги по монтажу, ремонту, обслуживанию и др.
-                </p>
-                <span className='my-4 mt-6'>
-                    <img src="/main-image2.png" alt="" className='w-10/12 aspect-auto mx-auto'/>
-               </span>
-            </section>
-            <section>
-                <Steps />
-            </section>
+        <div className='w-8/12 flex justify-center' >
+            <form method='GET' action={'/home'}>
+                <div className="space-y-12">
+                    <div className="border-b border-gray-900/10 pb-12">
 
-            <section className={'bg-white'}>
-                <Next/>
-            </section>
 
-            <section className='mt-10'>
-                <CategoryList/>
-            </section>
-            <section className='px-4' >
-                <Discount />
-            </section>
-            <section className='my-5'>
-                <WhyWe/>
-            </section>
-            <section>
-                <Reviews />
-            </section>
+                        <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                            <div className="sm:col-span-4">
+                                <label htmlFor="username" className="block text-sm/6 font-medium text-gray-900">
+                                    Password
+                                </label>
+                                <div className="mt-2">
+                                    <div
+                                        className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                                        <input
+                                            id="password"
+                                            name="password"
+                                            type="password"
+                                            placeholder="password"
+                                            value={value}
+                                            onChange={(event) => setValue(event.target.value)}
+                                            className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm/6"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
+                <div className="mt-6 flex items-center justify-end gap-x-6">
+                    <button
+                        type="submit"
+                        className="rounded-md bg-tint px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                    >
+                        Accesss
+                    </button>
+                </div>
+            </form>
         </div>
-
-    );
-};
-
+    )
+}

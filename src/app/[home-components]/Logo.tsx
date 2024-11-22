@@ -1,13 +1,15 @@
 import React from "react";
+import Image from 'next/image'
 
-
-export default function Logo({size}) {
+export default function Logo({className}: props) {
     return (
-        <div className={`w-${size}`} >
-            <a href="/public">
-                <img src="/logo-v3.png" alt=""/>
-            </a>
-        </div>
+        <a href="/">
+            <Image src="/logo-v3.png" alt="" width={80} height={80} className={className}/>
+        </a>
 
     )
+}
+
+type props = {
+    className: string
 }

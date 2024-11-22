@@ -11,7 +11,7 @@ const reviews = [
         date: 'May 15, 2024',
         text: 'Absolutely amazing product! It exceeded all my expectations and solved my problem perfectly.',
         avatar: '/api/placeholder/50/50',
-        photos: ['/api/placeholder/100/100', '/api/placeholder/100/100', '/api/placeholder/100/100', '/api/placeholder/100/100']
+        photos: ['/placeholder-image.jpg', '/placeholder-image.jpg', '/placeholder-image.jpg', '/placeholder-image.jpg']
     },
     {
         id: 2,
@@ -20,7 +20,7 @@ const reviews = [
         date: 'April 22, 2024',
         text: 'Great value for money. The quality is top-notch and the customer service was exceptional.',
         avatar: '/api/placeholder/50/50',
-        photos: ['/api/placeholder/100/100', '/api/placeholder/100/100', '/api/placeholder/100/100', '/api/placeholder/100/100']
+        photos: ['/placeholder-image.jpg', '/placeholder-image.jpg', '/placeholder-image.jpg', '/placeholder-image.jpg']
     },
     {
         id: 3,
@@ -29,7 +29,7 @@ const reviews = [
         date: 'June 1, 2024',
         text: 'I was skeptical at first, but this product has completely transformed my daily routine.',
         avatar: '/api/placeholder/50/50',
-        photos: ['/api/placeholder/100/100', '/api/placeholder/100/100', '/api/placeholder/100/100', '/api/placeholder/100/100']
+        photos: ['/placeholder-image.jpg', '/placeholder-image.jpg', '/placeholder-image.jpg', '/placeholder-image.jpg']
     },
     {
         id: 4,
@@ -38,7 +38,7 @@ const reviews = [
         date: 'March 10, 2024',
         text: 'Solid performance and great design. Would definitely recommend to anyone looking for a reliable solution.',
         avatar: '/api/placeholder/50/50',
-        photos: ['/api/placeholder/100/100', '/api/placeholder/100/100', '/api/placeholder/100/100', '/api/placeholder/100/100']
+        photos: ['/placeholder-image.jpg', '/placeholder-image.jpg', '/placeholder-image.jpg', '/placeholder-image.jpg']
     },
     {
         id: 5,
@@ -47,7 +47,7 @@ const reviews = [
         date: 'May 5, 2024',
         text: 'Incredible product that delivers exactly what it promises. Couldn\'t be happier!',
         avatar: '/api/placeholder/50/50',
-        photos: ['/api/placeholder/100/100', '/api/placeholder/100/100', '/api/placeholder/100/100', '/api/placeholder/100/100']
+        photos: ['/placeholder-image.jpg', '/placeholder-image.jpg', '/placeholder-image.jpg', '/placeholder-image.jpg']
     }
 ];
 

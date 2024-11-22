@@ -1,6 +1,6 @@
 import type {Metadata} from "next";
-import {Jura, Comfortaa, Nunito} from "next/font/google";
 import "./globals.css";
+import {Jura, Comfortaa, Nunito} from "next/font/google";
 import Footer from "@/app/[home-components]/Footer";
 import Header from "@/app/[home-components]/Header";
 import Drawer from "@/app/[home-components]/Drawer";
@@ -37,14 +37,13 @@ export default function RootLayout({children,}: Readonly<{ children: React.React
         >
         <RootProvider>
             <Drawer/>
-
-            <div className="min-h-screen flex flex-col">
-                <Header/>
-                <main className="flex-grow bg-tbg">
-                    <AntdRegistry>{children}</AntdRegistry>
-                </main>
-                <Footer/>
-            </div>
+            <Header/>
+            <main className="flex-grow bg-tbg">
+                <AntdRegistry>
+                    {children}
+                </AntdRegistry>
+            </main>
+            <Footer/>
 
         </RootProvider>
 

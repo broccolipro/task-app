@@ -1,7 +1,7 @@
 'use client'
 
-import React, {useContext, useState} from 'react'
-import { Dialog, DialogBackdrop, DialogPanel, DialogTitle, TransitionChild } from '@headlessui/react'
+import React, {useContext} from 'react'
+import { Dialog, DialogBackdrop, DialogPanel, TransitionChild } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import {DrawerContext} from "@/shared/drawer/DrawerProvider";
 import Logo from "./Logo";
@@ -38,7 +38,7 @@ export default function Drawer() {
                             </TransitionChild>
                             <div className="flex h-full flex-col overflow-y-scroll bg-white py-6 shadow-xl">
                                 <div className="px-4 sm:px-6">
-                                    <Logo size={'24'}/>
+                                    <Logo className={'w-24'}/>
                                 </div>
                                 <div className="relative mt-6 flex-1 px-4 sm:px-6">
                                     Главная

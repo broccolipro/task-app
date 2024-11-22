@@ -25,7 +25,7 @@ function PasswordProtectedContent({ children }: { children: React.ReactNode }) {
             </RootProvider>
         );
     } else {
-        return <div>Go away</div>;
+        return <div>Wrong password</div>;
     }
 }
 

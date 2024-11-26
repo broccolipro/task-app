@@ -5,9 +5,29 @@ import { Dialog, DialogBackdrop, DialogPanel, TransitionChild } from '@headlessu
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import {DrawerContext} from "@/shared/drawer/DrawerProvider";
 import Logo from "./Logo";
+import SolidButton from "@/components/SolidButton";
+import LiginButton from "@/components/LiginButton";
+import SignUpButton from "@/components/SignUpButton";
+import {Button} from "@/components/ui/button";
+import Link from "next/link";
 
 export default function Drawer() {
     const {open, setOpen} = useContext(DrawerContext)
+
+    const navs = [
+        {
+            title: 'Главная',
+            href: '/'
+        },
+        {
+            title: 'О нас',
+            href: '/about'
+        },
+        {
+            title: 'Создать',
+            href: '/create-task'
+        },
+    ]
 
     return (
         <Dialog open={open} onClose={setOpen} className="relative z-10">
@@ -41,11 +61,29 @@ export default function Drawer() {
                                     <Logo className={'w-24'}/>
                                 </div>
                                 <div className="relative mt-6 flex-1 px-4 sm:px-6">
-                                    Главная
-                                    <br/>
-                                    О нас
-                                    <br/>
-                                    Контакты
+                                    <div className='p-5 pl-2 grid gap-3'>
+                                        <div className=''>
+                                            <Button asChild className='rounded-lg bg-tint'>
+                                                <Link href="/signup">Регистрация</Link>
+                                            </Button>
+                                        </div>
+                                        <LiginButton/>
+                                    </div>
+                                    <hr/>
+                                    <div className='p-4' >
+                                        <ol className=''>
+                                            {
+                                                navs.map(nav =>
+                                                    <a key={nav.title} href={nav.href} className='active:text-gray-900'>
+                                                        <li className='font-nunito font-bold text-xl mb-2 underline'>
+                                                            {nav.title}
+                                                        </li>
+                                                    </a>
+                                                )
+                                            }
+                                        </ol>
+                                    </div>
+
                                 </div>
                             </div>
                         </DialogPanel>

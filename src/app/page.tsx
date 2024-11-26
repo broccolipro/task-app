@@ -1,6 +1,6 @@
 import React from 'react';
 import WhyWe from "@/app/[home-components]/WhyWe";
-import CategoryList from "@/app/[home-components]/CategoryList";
+import CategoryList2 from "@/app/[home-components]/CategoryList";
 import Next from "@/app/[home-components]/Next";
 import Steps from "@/app/[home-components]/Steps";
 import Discount from "@/app/[home-components]/Discount";
@@ -34,7 +34,7 @@ export default function Home() {
             <div className='bg-white'>
                 <div className={containerStyles}>
                     <Steps/>
-                    <CategoryList/>
+                    <CategoryList2/>
                     <Discount/>
                     <WhyWe/>
                     <Reviews/>

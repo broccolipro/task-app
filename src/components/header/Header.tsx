@@ -5,9 +5,8 @@ import {DrawerContext} from "@/shared/drawer/DrawerProvider";
 import Logo from "../Logo";
 import LoginButton from '@/components/LiginButton'
 import {RxDividerVertical} from "react-icons/rx";
-import SignInButton from "@/components/SignUpButton";
-import {Button} from "@/components/ui/button";
 import Link from "next/link";
+import {Button} from "@/components/ui/button";
 
 
 export default function Header() {

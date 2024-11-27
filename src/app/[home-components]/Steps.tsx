@@ -1,8 +1,9 @@
 import React from 'react';
 import {Steps} from 'antd';
-import { Button } from "@/components/ui/button"
+
 import Link from "next/link";
 import {StepProps} from "antd/lib";
+import {Button} from "@/components/ui/button";
 
 export default function Step() {
 

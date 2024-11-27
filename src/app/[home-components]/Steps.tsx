@@ -2,10 +2,11 @@ import React from 'react';
 import {Steps} from 'antd';
 import { Button } from "@/components/ui/button"
 import Link from "next/link";
+import {StepProps} from "antd/lib";
 
 export default function Step() {
 
-    const steps = [
+    const steps:  StepProps[] = [
         {
             title: 'Оставьте заявку',
             description: 'Опишите проблему, прикрепите фото и укажите ваши пожелания.',
@@ -35,7 +36,7 @@ export default function Step() {
                 <div className='text-xl text-center font-nunito font-bold mb-8 max-w-[30rem] text-black'>
                     Наша команда опытных мастеров поможет вам решить вашу бытрвую задачу
                 </div>
-                <div className={'px-5 max-w-20'} >
+                <div className={'px-5'} >
                     <Button className={'w-full bg-tint'}>
                         <Link href={''} > Заказать </Link>
                     </Button>

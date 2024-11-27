@@ -64,7 +64,7 @@ export default function Drawer() {
                                     <div className='p-5 pl-2 grid gap-3'>
                                         <div className=''>
                                             <Button asChild className='rounded-lg bg-tint'>
-                                                <Link href="/signup">Регистрация</Link>
+                                                <a href="/signup">Регистрация</a>
                                             </Button>
                                         </div>
                                         <LiginButton/>

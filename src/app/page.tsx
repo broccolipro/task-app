@@ -12,7 +12,7 @@ export default function Home() {
     const containerStyles = 'md:w-11/12 lg:w-9/12 m-auto'
 
     return (
-        <>
+        <div className='bg-tbg'>
             <div className={`${containerStyles} py-10`}>
                 <div className='min-h-80 flex flex-col items-center lg:flex-row'>
                     <div className='self-stretch lg:py-4 lg:space-y-6 ' >
@@ -40,7 +40,7 @@ export default function Home() {
                     <Reviews/>
                 </div>
             </div>
-        </>
+        </div>
 
 
     );

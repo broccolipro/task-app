@@ -6,6 +6,8 @@ import Logo from "../Logo";
 import LoginButton from '@/components/LiginButton'
 import {RxDividerVertical} from "react-icons/rx";
 import SignInButton from "@/components/SignUpButton";
+import {Button} from "@/components/ui/button";
+import Link from "next/link";
 
 
 export default function Header() {
@@ -41,7 +43,9 @@ export default function Header() {
                     <RxDividerVertical size={20} color={'gray'} className='ml-3'/>
                     <div className='flex ml-3 space-x-3' >
                         <LoginButton/>
-                        <SignInButton/>
+                        <Button asChild>
+                            <Link href="/signup">Регистрация</Link>
+                        </Button>
                     </div>
                 </div>
             </div>

@@ -15,7 +15,7 @@ const jura = Jura({
 const comfortaa = Comfortaa({
     subsets: ["cyrillic"],
     variable: '--font-comfortaa',
-    weight: ['300', '400', "500", "600", "700", ]
+    weight: ['300', '400', "500", "600", "700",]
 })
 
 const nunito = Nunito({
@@ -36,15 +36,18 @@ export default function RootLayout({children,}: Readonly<{ children: React.React
             className={` ${nunito.variable}  antialiased bg-white`}
         >
         <RootProvider>
-            <Drawer/>
-            <Header/>
-            <main className="h-full bg-tbg">
-                <AntdRegistry>
-                    {children}
-                </AntdRegistry>
-            </main>
-            <Footer/>
+            <AntdRegistry>
+                <Drawer/>
 
+                <div className='flex flex-col min-h-screen'>
+                    <Header/>
+                    <main className="flex-grow flex flex-col">
+                        {children}
+                    </main>
+                    <Footer/>
+                </div>
+
+            </AntdRegistry>
         </RootProvider>
 
         </body>

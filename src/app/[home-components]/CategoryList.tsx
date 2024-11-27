@@ -10,7 +10,7 @@ import {RiHammerLine} from "react-icons/ri";
 import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/ui/tabs";
 import CategoryLIst2 from "@/app/[home-components]/CategoryLIst2";
 
-export default function CategoryList() {
+export default function CategoryList2() {
     const [activeCategory, setActiveCategory] = useState(null);
     const categoryRefs = useRef({});
 
@@ -99,7 +99,7 @@ export default function CategoryList() {
                     );
                 })}
             </div>
-            <CategoryLIst2 items={items} />
+            {/*<CategoryLIst2 items={items} />*/}
         </div>
     )
 }

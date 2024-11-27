@@ -3,6 +3,6 @@
 
 export default function () {
     return(
-        <div>register now</div>
+        <div >register now</div>
     )
 }

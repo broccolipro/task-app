@@ -82,13 +82,7 @@ const ReviewCarousel = () => {
     };
 
     return (
-        <div className="w-full max-w-4xl mx-auto relative my-10">
-            {/*<div className="w-10/12 mx-auto">*/}
-            {/*    <svg id="Background" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 314.88 43.01"*/}
-            {/*         className="fill-none stroke-black stroke-[6px]">*/}
-            {/*        <path d="M.72,40.08L150,3.08l164.22,37" className="stroke-tint stroke-[6px]"/>*/}
-            {/*    </svg>*/}
-            {/*</div>*/}
+        <div className="w-full mx-auto relative px-4  my-10">
             <div className="text-center mb-6">
                 <h2 className="text-2xl font-bold text-gray-800">Липовые отзывы</h2>
                 <p className="text-gray-600 mt-2">Посмотрите как о нас отзываются наши клиенты</p>

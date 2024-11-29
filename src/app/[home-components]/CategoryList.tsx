@@ -9,6 +9,7 @@ import {TbGardenCart} from "react-icons/tb";
 import {RiHammerLine} from "react-icons/ri";
 import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/ui/tabs";
 import CategoryLIst2 from "@/app/[home-components]/CategoryLIst2";
+import {categories} from "@/shared/categories";
 
 export default function CategoryList2() {
     const [activeCategory, setActiveCategory] = useState(null);
@@ -45,8 +46,8 @@ export default function CategoryList2() {
     }, [activeCategory]);
     return (
         <div>
-            <div className="w-full max-w-lg mx-auto hidden">
-                {items.map((category) => {
+            <div className="w-full max-w-lg mx-auto">
+                {categories.map((category) => {
                     const isActive = activeCategory === category.id;
 
                     return (
@@ -60,11 +61,11 @@ export default function CategoryList2() {
                         >
                             <button
                                 onClick={() => toggleCategory(category.id)}
-                                className={`w-full px-4 py-3 flex items-center justify-between hover:bg-gray-50 transition-all duration-200 ${
+                                className={`w-full px-4 py-3 flex categories-center justify-between hover:bg-gray-50 transition-all duration-200 ${
                                     isActive ? 'bg-gray-50' : ''
                                 }`}
                             >
-                                <div className="flex items-center gap-3">
+                                <div className="flex categories-center gap-3">
                                     <span className="text-xl">{category.icon}</span>
                                     <span className="text-base text-gray-700">{category.title}</span>
                                 </div>
@@ -99,82 +100,9 @@ export default function CategoryList2() {
                     );
                 })}
             </div>
-            {/*<CategoryLIst2 items={items} />*/}
+            {/*<CategoryLIst2 categories={categories} />*/}
         </div>
     )
 }
 
-const items = [
-    {
-        id: 1,
-        value: 'construction',
-        title: 'Строительство и ремонт',
-        icon: <BiPaintRoll size={30} color={'#107888'}/>,
-        options: [
-            'Косметический и капитальный ремонт',
-            'Отделочные работы (штукатурка, покраска, поклейка обоев)',
-            'Укладка плитки, ламината, паркета',
-            'Монтаж и демонтаж перегородок, потолков, полов'
-        ]
-    },
-    {
-        id: 2,
-        value: 'repair',
-        title: 'Бытовая техника',
-        icon: <GiWashingMachine size={30} color={'#107888'}/>,
-        options: [
-            'Установка и подключение стиральных машин, холодильников, посудомоек',
-            'Ремонт мелкой бытовой техники (микроволновки, утюги и т. д.)',
-            'Установка телевизоров и настройка оборудования'
-        ]
-    },
-    {
-        id: 3,
-        value: 'doors',
-        title: 'Окна и двери',
-        icon: <GiDoorHandle size={30} color={'#107888'}/>,
-        options: [
-            'Регулировка окон и дверей',
-            'Замена и установка дверных замков, ручек',
-            'Установка межкомнатных и входных дверей',
-            'Монтаж и герметизация окон'
-        ]
-    },
-    {
-        id: 4,
-        value: 'furniture',
-        title: 'Мебель и кухня',
-        icon: <BiCabinet size={30} color={'#107888'}/>,
-        options: [
-            'Сборка и разборка мебели',
-            'Ремонт мебели (замена фурнитуры, реставрация)',
-            'Установка встроенной мебели',
-            'Установка кухонных гарнитуров',
-            'Монтаж и подключение варочных панелей, духовых шкафов',
-            'Установка вытяжек и систем фильтрации воды'
-        ]
-    },
-    {
-        id: 5,
-        value: 'garden',
-        title: 'Сад и двор',
-        icon: <TbGardenCart size={30} color={'#107888'}/>,
-        options: [
-            'Уход за газоном (стрижка, полив, аэрация)',
-            'Обрезка кустов, деревьев',
-            'Посадка цветов, растений',
-            'Укладка тротуарной плитки'
-        ]
-    },
-    {
-        id: 6,
-        value: 'pictures',
-        title: 'Картины, карнизы, ТВ',
-        icon: <RiHammerLine size={30} color={'#107888'}/>,
-        options: [
-            'Установка карнизов, жалюзи, штор',
-            'Монтаж картин, зеркал, полок',
-            'Установка телевизоров на стену'
-        ]
-    }
-]
+

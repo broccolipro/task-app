@@ -1,45 +1,98 @@
-import React from 'react';
+'use client'
+
+import React, {useState} from 'react';
 import WhyWe from "@/app/[home-components]/WhyWe";
 import CategoryList2 from "@/app/[home-components]/CategoryList";
 import Next from "@/app/[home-components]/Next";
 import Steps from "@/app/[home-components]/Steps";
 import Discount from "@/app/[home-components]/Discount";
 import Reviews from "@/app/[home-components]/Reviews";
+import Main from "@/app/[home-components]/Main";
+import Categories3 from "@/app/[home-components]/Categories3";
+import {Button} from "@/components/ui/button"
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog"
+import {Input} from "@/components/ui/input"
+import {Label} from "@/components/ui/label"
+import {FaTelegram, FaViber, FaWhatsapp} from "react-icons/fa";
+import {Textarea} from "@/components/ui/textarea";
 
 
 export default function Home() {
+    const [isOpen, setIsOpen] = useState(false)
 
-    const containerStyles = 'md:w-11/12 lg:w-9/12 m-auto'
+    const iconSize = 40
+    const social = [
+        {
+            icon: <FaViber size={iconSize} color={'#665CAC'}/>,
+            title: 'Viber'
+        },
+        {
+            icon: <FaWhatsapp size={iconSize} color={'#25D366'}/>,
+            title: 'Whatsapp'
+        },
+        {
+            icon: <FaTelegram size={iconSize} color={'#0088CC'}/>,
+            title: 'Telegram'
+        },
+
+    ]
 
     return (
-        <div className='bg-tbg'>
-            <div className={`${containerStyles} py-10`}>
-                <div className='min-h-80 flex flex-col items-center lg:flex-row'>
-                    <div className='self-stretch lg:py-4 lg:space-y-6 ' >
-                        <h1 className='text-4xl md:text-5xl lg:text-6xl xl:text-7xl break-words whitespace-normal text-center font-nunito font-[800] text-gray-600'>
-                            Чем вам помочь?</h1>
-                        <div className='px-12' >
-                            <p className='text-center mt-1 text-2sm leading-5 text-gray-600'>
-                                Профессиональные услуги по монтажу, ремонту, обслуживанию и многое другое.
-                            </p>
+        <div>
+            <Main onMakeApp={setIsOpen}/>
+            <div className='md:w-11/12 lg:w-7/12 m-auto p-5 md:mt-10'>
+                <Categories3/>
+                {/*<Steps/>*/}
+                {/*<CategoryList2/>*/}
+                <Discount/>
+                <WhyWe/>
+                <Reviews/>
+            </div>
+
+            <Dialog open={isOpen} onOpenChange={(open) => setIsOpen(open)}>
+                <DialogContent className="sm:max-w-[425px] -mt-20">
+                    <DialogHeader>
+                        <DialogTitle>Подача заявки</DialogTitle>
+                        <DialogDescription>
+                            Выберите удобный для вас месенджер. Получите моментальный ответ от нашего оператора.
+                        </DialogDescription>
+                    </DialogHeader>
+                    <div className="grid gap-4 py-4">
+                        <div className="grid grid-cols-4 items-center gap-4">
+                            <Label htmlFor="name" className="text-right">
+                                Имя
+                            </Label>
+                            <Input id="name" placeholder={'Как вас зовут?'} className="col-span-3"/>
+                        </div>
+                        <div className="grid grid-cols-4 items-center gap-4">
+                            <Label htmlFor="description" className="text-right">
+                                Что нужно сделать?
+                            </Label>
+                            <Textarea id="description" placeholder={'Коротоко опишите задание'} rows={4}  className="col-span-3"/>
                         </div>
                     </div>
-                    <span className='my-4 mt-6'>
-                        <img src="/main-image2.png" alt="People with tools" className='w-10/12 aspect-auto mx-auto'/>
-                    </span>
-                </div>
-
-            </div>
-
-            <div className='bg-white'>
-                <div className={containerStyles}>
-                    <Steps/>
-                    <CategoryList2/>
-                    <Discount/>
-                    <WhyWe/>
-                    <Reviews/>
-                </div>
-            </div>
+                    <DialogFooter className={'sm:justify-center'}>
+                        <div className={'flex justify-around px-10 sm:gap-10'} >
+                            {
+                                social.map((item, index) =>
+                                    <button key={index} className='flex flex-col items-center ' >
+                                        {item.icon}
+                                        {item.title}
+                                    </button>
+                                )
+                            }
+                        </div>
+                    </DialogFooter>
+                </DialogContent>
+            </Dialog>
         </div>
 
 

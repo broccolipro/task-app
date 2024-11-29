@@ -18,6 +18,7 @@ export default {
   			'tint-100': '#32adbd',
   			'tint-200': '#228d9b',
   			tbg: '#fafafa',
+			mute: '#929292',
 
 
   			card: {

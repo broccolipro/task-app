@@ -22,7 +22,7 @@ export default function Main({onMakeApp}) {
                 <div className={'h-3/6 sm:h-4/6 p-10  flex flex-col justify-end'}>
 
 
-                        <img className='max-w-[500px] max-h-full object-contain mx-auto'
+                        <img className='max-w-[500px] w-full max-h-full object-contain mx-auto'
                              src={'/main-image2.png'}
                              alt={''}/>
 

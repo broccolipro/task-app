@@ -30,7 +30,7 @@ export default function Header() {
         </div>
 
     return (
-        <header className='border-b bg-white sticky top-0'>
+        <header className='border-b bg-white sticky top-0 z-50'>
             <div
                 className={'flex justify-center items-center m-auto w-full h-16  lg:justify-between lg:w-8/12 '}>
                 <div className='absolute left-0 ml-2 lg:hidden'>

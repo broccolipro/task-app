@@ -12,7 +12,7 @@ export default function Main() {
                 <div className='h-2.5/6 sm:h-2/6 pt-10 flex flex-col overflow-hidden'>
                     <div className='space-y-5 p-5'>
                         <h1 className={'font-bold font-nunito text-4xl lg:text-6xl text-center'}>Чем вам помочь?</h1>
-                        <p className={'text-center text-mute font-nunito font-medium text-lg'}>Профессиональные услуги по монтажу, ремонту, обслуживанию и многое
+                        <p className={'text-center text-mute font-nunito font-medium text-xl'}>Профессиональные услуги по монтажу, ремонту, обслуживанию и многое
                             другое </p>
                     </div>
 

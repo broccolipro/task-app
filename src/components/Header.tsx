@@ -1,24 +1,19 @@
 'use client'
 import React, {useContext} from "react";
 import {Menu} from 'lucide-react';
-import {DrawerContext} from "@/shared/drawer/DrawerProvider";
-import Logo from "../Logo";
-import LoginButton from '@/components/LiginButton'
+import Logo from "./Logo";
 import {RxDividerVertical} from "react-icons/rx";
-import Link from "next/link";
-import {Button} from "@/components/ui/button";
 import {GrLanguage} from "react-icons/gr";
+import NavButtons from "@/components/NavButtons";
+import {AppContext} from "@/shared/providers/AppProvider";
 
 
 export default function Header() {
 
-    const {open, setOpen} = useContext(DrawerContext)
+    const { setSidebarIsOpen } = useContext(AppContext)
 
-    const navButtons = [
-        'Главная',
-        'Создать',
-        'О нас',
-    ]
+
+
 
     const Language = ({className}) =>
         <div className={`absolute right-5 ${className}`}>
@@ -30,26 +25,18 @@ export default function Header() {
         </div>
 
     return (
-        <header className='border-b bg-white sticky top-0 z-50'>
+        <header className='border-b bg-white sticky top-0 z-20'>
             <div
                 className={'flex justify-center items-center m-auto w-full h-16  lg:justify-between lg:w-8/12 '}>
                 <div className='absolute left-0 ml-2 lg:hidden'>
-                    <Menu size={32} color={'#095662'} onClick={() => setOpen(!open)}/>
+                    <Menu size={32} color={'#095662'} onClick={() => setSidebarIsOpen(true)}/>
                 </div>
                 <Logo className={'max-w-24'}/>
                 <Language className='lg:hidden' />
 
                 <div className='lg:flex items-center hidden'>
                     <ol className='flex space-x-4 font-nunito font-bold text-lg'>
-                        {
-                            navButtons.map((name, index) =>
-                                <li key={index}>
-                                    <a href="#">
-                                        {name}
-                                    </a>
-                                </li>
-                            )
-                        }
+                        <NavButtons/>
                     </ol>
                     <RxDividerVertical size={20} color={'gray'} className='ml-3'/>
                     <button className={`ml-5`}>

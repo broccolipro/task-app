@@ -2,10 +2,11 @@ import type {Metadata} from "next";
 import "./globals.css";
 import {Jura, Comfortaa, Nunito} from "next/font/google";
 import Footer from "@/components/Footer";
-import Header from "@/components/header/Header";
-import Drawer from "@/components/Drawer";
-import {RootProvider} from "@/shared/RootProvider";
+import Header from "@/components/Header";
 import {AntdRegistry} from "@ant-design/nextjs-registry";
+import {SidebarProvider} from "@/components/ui/sidebar";
+import SideBar from "@/components/AppSidebar";
+import AppProvider from "@/shared/providers/AppProvider";
 
 const jura = Jura({
     subsets: ["cyrillic"],
@@ -35,21 +36,16 @@ export default function RootLayout({children,}: Readonly<{ children: React.React
         <body
             className={` ${nunito.variable}  antialiased bg-white`}
         >
-        <RootProvider>
-            <AntdRegistry>
-                <Drawer/>
-
-                <div className='flex flex-col min-h-screen'>
-                    <Header/>
-                    <main className="flex-grow flex flex-col">
-                        {children}
-                    </main>
-                    <Footer/>
-                </div>
-
-            </AntdRegistry>
-        </RootProvider>
-
+        <AppProvider>
+            <SideBar/>
+            <div className='flex flex-col min-h-screen'>
+                <Header/>
+                <main className="flex-grow flex flex-col">
+                    {children}
+                </main>
+                <Footer/>
+            </div>
+        </AppProvider>
         </body>
         </html>
     );

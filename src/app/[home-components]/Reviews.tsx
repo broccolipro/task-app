@@ -1,75 +1,81 @@
 'use client'
 
-import React, {useState, useRef} from 'react';
-import {ChevronLeft, ChevronRight, Star} from 'lucide-react';
+import React, {useState, useRef, useContext} from 'react';
+import {Star} from 'lucide-react';
+
+import {
+    Carousel,
+    CarouselContent,
+    CarouselItem,
+    CarouselNext,
+    CarouselPrevious,
+} from "@/components/ui/carousel"
+import {Card, CardContent} from "@/components/ui/card";
+import {AppContext} from "@/shared/providers/AppProvider";
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger
+} from "@/components/ui/dialog";
 
 const reviews = [
     {
         id: 1,
-        name: 'Emily Johnson',
+        name: 'анонимно',
         rating: 5,
-        date: 'May 15, 2024',
-        text: 'Absolutely amazing product! It exceeded all my expectations and solved my problem perfectly.',
+        date: 'April 22, 2024',
+        text: 'Спасибо большое за работу! Всё сделали аккуратно и качественно демонтировали дверь установили новую, смонтировали наличники и провели герметизацию Очень довольны результатом! СПАСИБО!',
         avatar: '/api/placeholder/50/50',
-        photos: ['/placeholder-image.jpg', '/placeholder-image.jpg', '/placeholder-image.jpg', '/placeholder-image.jpg']
+        photos: ['/review_images/review_door1.jpeg', '/review_images/review_door2.jpeg', '/review_images/review_door3.jpeg', '/review_images/review_door4.jpeg']
     },
     {
         id: 2,
-        name: 'Michael Chen',
-        rating: 4,
-        date: 'April 22, 2024',
-        text: 'Great value for money. The quality is top-notch and the customer service was exceptional.',
+        name: 'анонимно',
+        rating: 5,
+        date: 'May 15, 2024',
+        text: 'Заказывали установку полок на дом. Ребята сами купили полки и крепления по нашим размерам, постоянно советовались, что лучше взять. Всё установили точно так, как мы хотели. Очень удобно, остались довольны. Спасибо! 009.md',
         avatar: '/api/placeholder/50/50',
-        photos: ['/placeholder-image.jpg', '/placeholder-image.jpg', '/placeholder-image.jpg', '/placeholder-image.jpg']
+        photos: ['/review_images/review_shelf1.jpeg', '/review_images/review_shelf2.jpeg', '/review_images/review_shelf3.jpeg', '/review_images/review_shelf4.jpeg']
     },
     {
         id: 3,
-        name: 'Sarah Rodriguez',
+        name: 'Олег',
         rating: 5,
         date: 'June 1, 2024',
-        text: 'I was skeptical at first, but this product has completely transformed my daily routine.',
+        text: 'Recomand cu încredere! Am avut nevoie de o lampă-instalare pe care nu o găseam în magazine. Le-am scris băieților și am discutat toate detaliile: de unde să iau materialele, cu ce să vopsesc. Mulțumesc mult pentru ajutor – a ieșit cu adevărat frumos!',
         avatar: '/api/placeholder/50/50',
-        photos: ['/placeholder-image.jpg', '/placeholder-image.jpg', '/placeholder-image.jpg', '/placeholder-image.jpg']
+        photos: ['/review_images/review_luster1.jpeg', '/review_images/review_luster2.jpeg', '/review_images/review_luster3.jpeg', '/review_images/review_luster4.jpeg', '/review_images/review_luster5.jpeg', '/review_images/review_luster6.jpeg']
     },
     {
         id: 4,
-        name: 'David Kim',
-        rating: 4,
+        name: 'анонимно',
+        rating: 5,
         date: 'March 10, 2024',
-        text: 'Solid performance and great design. Would definitely recommend to anyone looking for a reliable solution.',
+        text: 'Договорились о дате и времени, обсудили все материалы и клеи. Я всё купил, ребята приехали и быстро уложили паркет. Работа выполнена отлично, огромный респект за профессионализм!',
         avatar: '/api/placeholder/50/50',
-        photos: ['/placeholder-image.jpg', '/placeholder-image.jpg', '/placeholder-image.jpg', '/placeholder-image.jpg']
+        photos: ['/review_images/review_floor.jpeg',]
     },
     {
         id: 5,
-        name: 'Anna Petrova',
+        name: 'патрик',
         rating: 5,
         date: 'May 5, 2024',
-        text: 'Incredible product that delivers exactly what it promises. Couldn\'t be happier!',
+        text: 'Mulțumesc mult pentru ajutorul cu montarea mobilei\n' +
+            'Trebuia să adun totul seara, ca să fie gata până dimineața. Băieții au făcut totul de calitate. Foarte comod cu siguranță voi apela din nou!',
         avatar: '/api/placeholder/50/50',
-        photos: ['/placeholder-image.jpg', '/placeholder-image.jpg', '/placeholder-image.jpg', '/placeholder-image.jpg']
+        photos: ['/review_images/review_closet.jpeg',]
     }
 ];
 
 const ReviewCarousel = () => {
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const carouselRef = useRef(null);
 
-    const scrollLeft = () => {
-        if (carouselRef.current) {
-            const scrollAmount = carouselRef.current.offsetWidth;
-            carouselRef.current.scrollLeft -= scrollAmount;
-            setCurrentIndex(prev => Math.max(0, prev - 1));
-        }
-    };
+    const [open, setOpen] = useState(false)
+    const [current, setCurrent] = useState(0)
+    const {reviewsRef} = useContext(AppContext)
 
-    const scrollRight = () => {
-        if (carouselRef.current) {
-            const scrollAmount = carouselRef.current.offsetWidth;
-            carouselRef.current.scrollLeft += scrollAmount;
-            setCurrentIndex(prev => Math.min(reviews.length - 1, prev + 1));
-        }
-    };
 
     const renderStars = (rating) => {
         return Array.from({length: 5}, (_, index) => (
@@ -82,88 +88,91 @@ const ReviewCarousel = () => {
     };
 
     return (
-        <div className="w-full mx-auto relative px-4  my-10">
+        <div className="w-full p-10 font-nunito pt-20" id={"reviews"} ref={reviewsRef}>
             <div className="text-center mb-6">
-                <h2 className="text-2xl font-bold text-gray-800">Липовые отзывы</h2>
-                <p className="text-gray-600 mt-2">Посмотрите как о нас отзываются наши клиенты</p>
+                <h2 className="text-3xl font-bold text-gray-800">Последние отзывы</h2>
+                <p className="text-gray-600 mt-2 text-lg">Посмотрите как о нас отзываются наши клиенты</p>
             </div>
 
-            <div className="relative">
-                {/* Scroll Left Button */}
-                {currentIndex > 0 && (
-                    <button
-                        onClick={scrollLeft}
-                        className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white shadow-md rounded-full p-2 hover:bg-gray-100"
-                    >
-                        <ChevronLeft className="w-6 h-6 text-gray-700"/>
-                    </button>
-                )}
+            <Carousel className="w-full" opts={{
+                loop: true
+            }} >
+                <CarouselContent >
+                    {reviews.map((review, index) => (
+                        <CarouselItem key={index} className='sm:basis-1/2 xl:basis-1/3'>
+                            <div className="p-1">
+                                <Card className='hover:cursor-pointer'>
+                                    <CardContent className="flex h-72 flex-col p-4">
+                                            {/* Review Header */}
+                                            <div className='flex-grow'>
+                                                <div className="flex items-center mb-4">
+                                                    <img
+                                                        src={'/user.jpg'}
+                                                        alt={'Мастер на час'}
+                                                        className="w-12 h-12 rounded-full mr-4"
+                                                    />
+                                                    <div className={''}>
+                                                        <h3 className="font-semibold text-gray-800">{review.name}</h3>
+                                                        <p className="text-sm text-gray-500">{review.date}</p>
+                                                    </div>
+                                                </div>
 
-                {/* Scroll Right Button */}
-                {currentIndex < reviews.length - 1 && (
-                    <button
-                        onClick={scrollRight}
-                        className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white shadow-md rounded-full p-2 hover:bg-gray-100"
-                    >
-                        <ChevronRight className="w-6 h-6 text-gray-700"/>
-                    </button>
-                )}
+                                                {/* Star Rating */}
+                                                <div className="flex mb-3">
+                                                    {renderStars(review.rating)}
+                                                </div>
 
-                {/* Reviews Carousel */}
-                <div
-                    ref={carouselRef}
-                    className="flex overflow-x-scroll scroll-smooth no-scrollbar space-x-6 py-4 px-2"
-                    style={{
-                        scrollSnapType: 'x mandatory',
-                        WebkitOverflowScrolling: 'touch'
-                    }}
-                >
-                    {reviews.map((review) => (
-                        <div
-                            key={review.id}
-                            className="flex-shrink-0 flex flex-col space-y-3 w-[22rem] bg-white shadow-lg rounded-xl p-6 border border-gray-100 scroll-snap-align-start"
-                        >
-                            {/* Review Header */}
-                            <div className='flex-grow' >
-                                <div className="flex items-center mb-4">
-                                    <img
-                                        src={'/user.jpg'}
-                                        alt={review.name}
-                                        className="w-12 h-12 rounded-full mr-4"
-                                    />
-                                    <div>
-                                        <h3 className="font-semibold text-gray-800">{review.name}</h3>
-                                        <p className="text-sm text-gray-500">{review.date}</p>
-                                    </div>
-                                </div>
+                                                {/* Review Text */}
+                                                <p className="text-gray-600 text-sm leading-relaxed line-clamp-3 ">
+                                                    "{review.text}"
+                                                </p>
+                                            </div>
 
-                                {/* Star Rating */}
-                                <div className="flex mb-3">
-                                    {renderStars(review.rating)}
-                                </div>
+                                            <div className="grid grid-cols-4 gap-3 mt-5 ">
+                                                {review.photos.slice(0,4).map((photo, sub_index) => (
+                                                    <div  key={sub_index} className=''
+                                                          onClick={() => {
+                                                              setCurrent(index)
+                                                              setOpen(true)
+                                                          }}
+                                                    >
+                                                        <img
+                                                            src={photo}
+                                                            alt={''}
+                                                            className="aspect-square object-cover rounded-md max-h-[80px]"
+                                                        />
+                                                    </div>
 
-                                {/* Review Text */}
-                                <p className="text-gray-600 text-sm leading-relaxed">
-                                    "{review.text}"
-                                </p>
+                                                ))}
+                                            </div>
+                                    </CardContent>
+                                </Card>
                             </div>
-
-                            <div className="flex space-x-2 mt-auto">
-                                {review.photos.map((photo, index) => (
-                                    <img
-                                        key={index}
-                                        src={photo}
-                                        alt={`Review photo ${index + 1}`}
-                                        className="w-16 h-16 object-cover rounded-md"
-                                    />
-                                ))}
-                            </div>
-
-                        </div>
-
+                        </CarouselItem>
                     ))}
-                </div>
-            </div>
+                </CarouselContent>
+                <CarouselPrevious/>
+                <CarouselNext/>
+            </Carousel>
+
+            <Dialog open={open} onOpenChange={setOpen} >
+                <DialogTrigger/>
+                <DialogContent className='font-nunito'>
+                    <DialogHeader>
+                        <DialogTitle></DialogTitle>
+                    </DialogHeader>
+                    <Carousel className="m-8">
+                        <CarouselContent  >
+                            {
+                                reviews[current].photos.map((url, index) =>
+                                    <img key={index} src={url} alt="" className='object-contain'/>)
+                            }
+                        </CarouselContent>
+                        <CarouselPrevious/>
+                        <CarouselNext/>
+                    </Carousel>
+                </DialogContent>
+            </Dialog>
         </div>
     );
 };

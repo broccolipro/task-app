@@ -1,6 +1,10 @@
-import Image from 'next/image'
+import {useContext} from "react";
+import {AppContext} from "@/shared/providers/AppProvider";
 
-export default function Main({onMakeApp}) {
+export default function Main() {
+
+    const {setOrderIsOpen, scrollToView, findMoreRef} = useContext(AppContext)
+
     return (
         <div className={` bg-tbg `}>
             <div className='lg:w-7/12 mx-auto'>
@@ -14,25 +18,18 @@ export default function Main({onMakeApp}) {
 
                     <div className={'mx-auto space-x-10 p-5'}>
                         <button className='bg-tint p-2 rounded-lg text-white'
-                                onClick={() => onMakeApp(true)}
+                                onClick={() => setOrderIsOpen(true)}
                         >Заказать услугу</button>
-                        <button>Узнать больше</button>
+                        <button onClick={() => scrollToView(findMoreRef)}>Узнать больше</button>
                     </div>
                 </div>
                 <div className={'h-3/6 sm:h-4/6 p-10  flex flex-col justify-end'}>
-
-
-                        <img className='max-w-[500px] w-full max-h-full object-contain mx-auto'
-                             src={'/main-image2.png'}
-                             alt={''}/>
-
+                    <img className='max-w-[500px] w-full max-h-full object-contain mx-auto'
+                         src={'/main-image2.png'}
+                         alt={''}/>
 
                 </div>
-
-
             </div>
-
-
         </div>
     )
 }

@@ -9,6 +9,7 @@ export interface CategoryItem {
     value: string;
     title: string;
     icon: ReactNode;
+    image: string;
     options: string[];
 }
 
@@ -21,6 +22,7 @@ export const categories: CategoryItem[] = [
         value: 'construction',
         title: 'Строительство и ремонт',
         icon: <BiPaintRoll size={_size} color={_color}/>,
+        image: '',
     options: [
     'Косметический и капитальный ремонт',
     'Отделочные работы (штукатурка, покраска, поклейка обоев)',
@@ -33,9 +35,10 @@ export const categories: CategoryItem[] = [
         value: 'repair',
     title: 'Бытовая техника',
     icon: <GiWashingMachine size={_size} color={_color}/>,
+    image: '',
     options: [
         'Установка и подключение стиральных машин, холодильников, посудомоек',
-        'Ремонт мелкой бытовой техники (микроволновки, утюги и т. д.)',
+        'Ремонт бытовой техники',
         'Установка телевизоров и настройка оборудования'
     ]
 },
@@ -44,6 +47,7 @@ export const categories: CategoryItem[] = [
         value: 'doors',
     title: 'Окна и двери',
     icon: <GiDoorHandle size={_size} color={_color}/>,
+    image: '',
     options: [
         'Регулировка окон и дверей',
         'Замена и установка дверных замков, ручек',
@@ -56,6 +60,7 @@ export const categories: CategoryItem[] = [
         value: 'furniture',
     title: 'Мебель и кухня',
     icon: <BiCabinet size={_size} color={_color}/>,
+    image: '',
     options: [
         'Сборка и разборка мебели',
         'Ремонт мебели (замена фурнитуры, реставрация)',
@@ -70,6 +75,7 @@ export const categories: CategoryItem[] = [
         value: 'garden',
     title: 'Сад и двор',
     icon: <TbGardenCart size={_size} color={_color}/>,
+    image: '',
     options: [
         'Уход за газоном (стрижка, полив, аэрация)',
         'Обрезка кустов, деревьев',
@@ -82,6 +88,7 @@ export const categories: CategoryItem[] = [
         value: 'pictures',
     title: 'Картины, карнизы, ТВ',
     icon: <RiHammerLine size={_size} color={_color}/>,
+    image: '',
     options: [
         'Установка карнизов, жалюзи, штор',
         'Монтаж картин, зеркал, полок',

@@ -11,5 +11,5 @@ export default function Logo({className}: props) {
 }
 
 type props = {
-    className: string
+    className?: string
 }

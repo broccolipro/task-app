@@ -1,6 +1,6 @@
 'use client'
 
-import React, {useState, useRef, useContext} from 'react';
+import React, {useState, useContext} from 'react';
 import {Star} from 'lucide-react';
 
 import {
@@ -15,7 +15,6 @@ import {AppContext} from "@/shared/providers/AppProvider";
 import {
     Dialog,
     DialogContent,
-    DialogDescription,
     DialogHeader,
     DialogTitle,
     DialogTrigger
@@ -74,7 +73,7 @@ const ReviewCarousel = () => {
 
     const [open, setOpen] = useState(false)
     const [current, setCurrent] = useState(0)
-    const {reviewsRef} = useContext(AppContext)
+    const {reviewsRef, t} = useContext(AppContext)
 
 
     const renderStars = (rating) => {
@@ -90,8 +89,12 @@ const ReviewCarousel = () => {
     return (
         <div className="w-full p-10 font-nunito pt-20" id={"reviews"} ref={reviewsRef}>
             <div className="text-center mb-6">
-                <h2 className="text-3xl font-bold text-gray-800">Последние отзывы</h2>
-                <p className="text-gray-600 mt-2 text-lg">Посмотрите как о нас отзываются наши клиенты</p>
+                <h2 className="text-3xl font-bold text-gray-800">
+                    {t('last_reviews_h')}
+                </h2>
+                <p className="text-gray-600 mt-2 text-lg">
+                    {t('last_reviews_p')}
+                </p>
             </div>
 
             <Carousel className="w-full" opts={{

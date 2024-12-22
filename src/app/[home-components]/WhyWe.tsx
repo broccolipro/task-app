@@ -1,13 +1,15 @@
-import {GiArrowed, GiTeamDowngrade} from "react-icons/gi";
+import {GiTeamDowngrade} from "react-icons/gi";
 import {BsArrowsFullscreen} from "react-icons/bs";
 import {LuSofa} from "react-icons/lu";
 import {AiOutlineSafetyCertificate} from "react-icons/ai";
 import {RiUserSettingsLine} from "react-icons/ri";
-import {BiWallet} from "react-icons/bi";
 import {TbPigMoney} from "react-icons/tb";
+import {ReactNode, useContext} from "react";
+import {AppContext} from "@/shared/providers/AppProvider";
 
 
 export default function WhyWe() {
+    const {currentLang} = useContext(AppContext)
     return (
         <div className='grid md:grid-cols-2 xl:grid-cols-3 md:gap-10 gap:2'>
             {benefits.map((benefit, index) => (
@@ -21,10 +23,10 @@ export default function WhyWe() {
                     </div>
                     <div>
                         <h3 className="font-bold text-lg text-teal-600">
-                            {benefit.title}
+                            {benefit.title[currentLang]}
                         </h3>
                         <p className="text-gray-600">
-                            {benefit.description}
+                            {benefit.description[currentLang]}
                         </p>
                     </div>
                 </div>
@@ -37,35 +39,83 @@ export default function WhyWe() {
 const size = 50;
 const color = 'rgb(245,158,11)';
 
-const benefits = [
+export interface BenefitItem {
+    title: {
+        ru: string;
+        ro: string;
+    };
+    description: {
+        ru: string;
+        ro: string;
+    };
+    icon: ReactNode;
+}
+
+const benefits: BenefitItem[] = [
     {
-        title: "Собственная команда мастеров",
-        description: "Все работы выполняют наши квалифицированные сотрудники — никаких посредников.",
+        title: {
+            ru: "Собственная команда мастеров",
+            ro: "Echipă proprie de meșteri"
+        },
+        description: {
+            ru: "Все работы выполняются нашей командой мастеров — никаких посредников.",
+            ro: "Toate lucrările sunt efectuate de echipa noastră de meșteri — fără intermediari."
+        },
         icon: <GiTeamDowngrade size={size} color={color}/>
     },
     {
-        title: "Индивидуальный подход",
-        description: "Мы учитываем ваши пожелания и предлагаем лучшие решения под ваши задачи.",
+        title: {
+            ru: "Индивидуальный подход",
+            ro: "Abordare individuală"
+        },
+        description: {
+            ru: "Мы учитываем ваши пожелания и предлагаем лучшие решения для ваших задач.",
+            ro: "Ținem cont de dorințele dumneavoastră și oferim cele mai bune soluții pentru nevoile dvs."
+        },
         icon: <RiUserSettingsLine size={size} color={color}/>
     },
     {
-        title: "Широкий спектр услуг",
-        description: "Ремонт, монтаж, обслуживание — решаем задачи любой сложности.",
+        title: {
+            ru: "Широкий спектр услуг",
+            ro: "Gamă largă de servicii"
+        },
+        description: {
+            ru: "Ремонт, монтаж, обслуживание — решаем задачи любой сложности.",
+            ro: "Reparații, montaj, întreținere — rezolvăm sarcini de orice complexitate."
+        },
         icon: <BsArrowsFullscreen size={size} color={color}/>
     },
     {
-        title: "Удобство для клиента",
-        description: "Оперативное выполнение работ, гибкий график, выезд в удобное время.",
+        title: {
+            ru: "Удобство для клиента",
+            ro: "Confort pentru client"
+        },
+        description: {
+            ru: "Оперативное выполнение работ, гибкий график, выезд в удобное время.",
+            ro: "Lucrări efectuate prompt, program flexibil, vizite la momentul convenabil."
+        },
         icon: <LuSofa size={size} color={color}/>
     },
     {
-        title: "Надежность и доверие",
-        description: "Работаем на репутацию, придерживаемся сроков и договоренностей.",
+        title: {
+            ru: "Надежность и доверие",
+            ro: "Fiabilitate și încredere"
+        },
+        description: {
+            ru: "Работаем на репутацию, придерживаемся сроков и договоренностей.",
+            ro: "Lucrăm pentru reputație, respectăm termenele și înțelegerile."
+        },
         icon: <AiOutlineSafetyCertificate size={size} color={color}/>
     },
     {
-        title: "Прозрачное ценообразование",
-        description: "Вы точно знаете, за что платите — никаких скрытых платежей и неожиданных расходов.",
+        title: {
+            ru: "Прозрачное ценообразование",
+            ro: "Transparență în stabilirea prețurilor"
+        },
+        description: {
+            ru: "Вы точно знаете, за что платите — никаких неожиданных расходов.",
+            ro: "Știți exact pentru ce plătiți — fără costuri neașteptate."
+        },
         icon: <TbPigMoney size={size} color={color}/>
     }
 ];

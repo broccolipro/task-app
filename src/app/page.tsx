@@ -15,7 +15,6 @@ import {
 } from "@/components/ui/dialog"
 import AboutUs from "@/app/[home-components]/AboutUs";
 import {useForm} from "react-hook-form"
-import { useRouter } from 'next/navigation';
 import {Button} from "@/components/ui/button"
 import {
     Form,
@@ -33,20 +32,19 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
-import PresentAlertDialog from "@/app/[home-components]/AlertDialog";
 import social from "@/shared/social";
 import {AppContext} from "@/shared/providers/AppProvider";
 
 
 export default function Home() {
-    const {orderIsOpen, setOrderIsOpen} = useContext(AppContext)
+    const {orderIsOpen, setOrderIsOpen, t} = useContext(AppContext)
     const [select, setSelect] = useState('telegram')
     const form = useForm()
 
+    const href = social[select].href
 
     return (
         <div>
-            <PresentAlertDialog/>
             <Main/>
             <div className='md:w-11/12 lg:w-9/12 xl:w-7/12 m-auto p-5 md:mt-10 sm:space-y-20'>
                 <Categories3/>
@@ -60,11 +58,11 @@ export default function Home() {
             <Dialog open={orderIsOpen} onOpenChange={(value) => {
                 setOrderIsOpen(value)
             }}>
-                <DialogContent className="sm:max-w-[425px] -mt-20">
+                <DialogContent className="">
                     <DialogHeader>
-                        <DialogTitle>Подача заявки</DialogTitle>
+                        <DialogTitle>{t('app_submission')}</DialogTitle>
                         <DialogDescription>
-                            Выберите удобное для вас приложение для связи с вами и нажмите перейти.
+                            {t('app_submission_p')}
                         </DialogDescription>
                     </DialogHeader>
 
@@ -74,13 +72,13 @@ export default function Home() {
 
                             <FormField
                                 name="messenger"
-                                render={({field}) => (
+                                render={({}) => (
                                     <FormItem>
-                                        <FormLabel>Мессенджер</FormLabel>
+                                        <FormLabel>{t('messenger')}</FormLabel>
                                         <Select  defaultValue={'telegram'} onValueChange={(value) => setSelect(value)}>
                                             <FormControl>
                                                 <SelectTrigger>
-                                                    <SelectValue placeholder="Выберите приложение"/>
+                                                    <SelectValue placeholder={t('choose_app')}/>
                                                 </SelectTrigger>
                                             </FormControl>
                                             <SelectContent>
@@ -105,13 +103,15 @@ export default function Home() {
                                             </SelectContent>
                                         </Select>
                                         <FormDescription>
-                                            Мы советуем пользоватья Telegram для большего удобства
+                                            {t('app_submission_advice')}
                                         </FormDescription>
                                         <FormMessage/>
                                     </FormItem>
                                 )}
                             />
-                            <Button onClick={() =>setOrderIsOpen(false)}><a href={social[select].href}>Перейти</a></Button>
+                            <Button onClick={() =>setOrderIsOpen(true)}>
+                                <a href={href}>{t('go')}</a>
+                            </Button>
                         </form>
                     </Form>
                 </DialogContent>

@@ -10,19 +10,16 @@ import {AppContext} from "@/shared/providers/AppProvider";
 
 export default function Header() {
 
-    const { setSidebarIsOpen } = useContext(AppContext)
+    const { setSidebarIsOpen, currentLang, switchLanguage } = useContext(AppContext)
 
+    const Language = () =>
+        <button className='flex gap-2'
+                onClick={switchLanguage}
+        >
+            <GrLanguage className='w-auto' size={20}/>
+            <h1>{currentLang}</h1>
+        </button>
 
-
-
-    const Language = ({className}) =>
-        <div className={`absolute right-5 ${className}`}>
-            <div className='flex gap-2'>
-                <GrLanguage className='w-auto' size={20}/>
-                <h1>ru</h1>
-            </div>
-
-        </div>
 
     return (
         <header className='border-b bg-white sticky top-0 z-20'>
@@ -32,20 +29,18 @@ export default function Header() {
                     <Menu size={32} color={'#095662'} onClick={() => setSidebarIsOpen(true)}/>
                 </div>
                 <Logo className={'max-w-24'}/>
-                <Language className='lg:hidden' />
+                <div className={`absolute right-5 lg:hidden`}>
+                    <Language/>
+                </div>
 
                 <div className='lg:flex items-center hidden'>
                     <ol className='flex space-x-4 font-nunito font-bold text-lg'>
                         <NavButtons/>
                     </ol>
                     <RxDividerVertical size={20} color={'gray'} className='ml-3'/>
-                    <button className={`ml-5`}>
-                        <div className='flex gap-2'>
-                            <GrLanguage className='w-auto' size={20}/>
-                            <h1>ru</h1>
-                        </div>
-
-                    </button>
+                    <div className={`ml-5`}>
+                        <Language/>
+                    </div>
 
                 </div>
             </div>

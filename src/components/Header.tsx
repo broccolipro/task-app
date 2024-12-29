@@ -25,10 +25,10 @@ export default function Header() {
         <header className='border-b bg-white sticky top-0 z-20'>
             <div
                 className={'flex justify-center items-center m-auto w-full h-16  lg:justify-between lg:w-8/12 '}>
-                <div className='absolute left-0 ml-2 lg:hidden'>
+                <div className='absolute left-0 ml-2 lg:hidden cursor-pointer'>
                     <Menu size={32} color={'#095662'} onClick={() => setSidebarIsOpen(true)}/>
                 </div>
-                <Logo className={'max-w-24'}/>
+                <Logo className='w-20'/>
                 <div className={`absolute right-5 lg:hidden`}>
                     <Language/>
                 </div>

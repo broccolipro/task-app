@@ -2,7 +2,7 @@ import {FaTelegram, FaViber, FaWhatsapp} from "react-icons/fa";
 import React from "react";
 
 
-const iconSize = 30
+export const iconSize = 24
 export default {
     telegram: {
         icon: (size?) => <FaTelegram size={size || iconSize} color={'#0088CC'}/>,

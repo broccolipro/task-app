@@ -1,10 +1,9 @@
 import type {Metadata} from "next";
 import "./globals.css";
 import {Nunito} from "next/font/google";
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
 import SideBar from "@/components/AppSidebar";
 import AppProvider from "@/shared/providers/AppProvider";
+import ClientProvider from "@/shared/providers/ClientProvider";
 
 // const jura = Jura({
 //     subsets: ["cyrillic"],
@@ -34,16 +33,12 @@ export default function RootLayout({children,}: Readonly<{ children: React.React
         <body
             className={` ${nunito.variable}  antialiased bg-white`}
         >
-        <AppProvider>
-            <SideBar/>
-            <div className='flex flex-col min-h-screen'>
-                <Header/>
-                <main className="flex-grow flex flex-col">
-                    {children}
-                </main>
-                <Footer/>
-            </div>
-        </AppProvider>
+        <ClientProvider>
+            <AppProvider>
+                <SideBar/>
+                {children}
+            </AppProvider>
+        </ClientProvider>
         </body>
         </html>
     );

@@ -3,7 +3,7 @@ import {AppContext} from "@/shared/providers/AppProvider";
 import {GrContactInfo} from "react-icons/gr";
 import {CgPlayListAdd} from "react-icons/cg";
 import {MdOutlineReviews} from "react-icons/md";
-import {TiContacts} from "react-icons/ti";
+import {BiPhoneCall} from "react-icons/bi";
 
 export default function NavButtons({withIcons = false}) {
     const {
@@ -16,7 +16,7 @@ export default function NavButtons({withIcons = false}) {
     } = useContext(AppContext)
 
 
-    const clickHandler = (action) => {
+    const clickHandler = (action: string) => {
         setSidebarIsOpen(false)
         switch (action) {
             case 'order':
@@ -34,7 +34,7 @@ export default function NavButtons({withIcons = false}) {
     const size = 30
     const LocalButton = ({icon, action, children}) =>
         <button onClick={() => clickHandler(action)} className='flex gap-x-3 items-center'>
-            {withIcons && icon}
+            {withIcons && <span className='text-tint'>{icon}</span>}
             {children}
         </button>
 
@@ -71,7 +71,7 @@ export default function NavButtons({withIcons = false}) {
             </li>
             <li>
                 <LocalButton action={'toAbout'}
-                             icon={<TiContacts size={size}/>}
+                             icon={<BiPhoneCall size={size}/>}
                 >
                     {localizedTexts[currentLang].contacts}
                 </LocalButton>

@@ -17,10 +17,10 @@ export default {
         about_us_p: ' - амбициозная команда профессионалов, специализирующаяся на мелком ремонте, монтаже и обслуживании для дома. Мы здесь, чтобы облегчить вашу жизнь, решая бытовые проблемы любого уровня сложности.',
         our_services_include_h: 'Наши услуги включают',
 
-        our_services_include_opt_1: 'Устранение неисправностей в бытовых приборах и системах',
-        our_services_include_opt_2: 'Устранение неисправностей в бытовых приборах и системах',
-        our_services_include_opt_3: 'Монтаж оборудования, мебели и различных конструкций',
-        our_services_include_opt_4: 'Регулярное техническое обслуживание устройств и инженерных систем',
+        our_services_include_opt_1: ' Устранение неисправностей в бытовых приборах и системах',
+        our_services_include_opt_2: ' Устранение неисправностей в бытовых приборах и системах',
+        our_services_include_opt_3: ' Монтаж оборудования, мебели и различных конструкций',
+        our_services_include_opt_4: ' Регулярное техническое обслуживание устройств и инженерных систем',
 
 
         our_contacts: 'Наши контакты',
@@ -83,7 +83,9 @@ export default {
         choose_app: 'Выберите приложение',
         messenger: 'Мессенджер',
         app_submission_advice: 'Мы советуем пользоватья Telegram для большего удобства',
-        go: 'Перейти'
+        go: 'Перейти',
+
+        anonymously: 'анонимно'
     },
 
     ro: {
@@ -104,10 +106,10 @@ export default {
         about_us_p: ' - o echipă ambițioasă de profesioniști, specializată în reparații minore, montaj și întreținere pentru casă. Suntem aici pentru a vă ușura viața, rezolvând probleme casnice de orice nivel de complexitate.',
         our_services_include_h: 'Serviciile noastre includ',
 
-        our_services_include_opt_1: 'Remedierea defecțiunilor la aparatele și sistemele casnice',
-        our_services_include_opt_2: 'Remedierea defecțiunilor la aparatele și sistemele casnice',
-        our_services_include_opt_3: 'Montajul echipamentelor, mobilierului și diferitelor structuri',
-        our_services_include_opt_4: 'Întreținerea tehnică regulată a dispozitivelor și sistemelor tehnice',
+        our_services_include_opt_1: ' Remedierea defecțiunilor la aparatele și sistemele casnice',
+        our_services_include_opt_2: ' Remedierea defecțiunilor la aparatele și sistemele casnice',
+        our_services_include_opt_3: ' Montajul echipamentelor, mobilierului și diferitelor structuri',
+        our_services_include_opt_4: ' Întreținerea tehnică regulată a dispozitivelor și sistemelor tehnice',
 
 
         our_contacts: 'Contactele noastre',
@@ -170,6 +172,8 @@ export default {
         choose_app: 'Alege o aplicație',
         messenger: 'Messenger',
         app_submission_advice: 'Vă recomandăm să folosiți Telegram pentru mai mult confort',
-        go: 'Continuă'
+        go: 'Continuă',
+
+        anonymously: 'anonim'
     }
 }

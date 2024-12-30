@@ -23,7 +23,7 @@ export default function AppSidebar() {
             <SheetContent className=''>
                 <SheetHeader>
                     <SheetTitle>
-                        <Logo/>
+                        <Logo className='w-24'/>
                     </SheetTitle>
                     <SheetDescription>
                     </SheetDescription>

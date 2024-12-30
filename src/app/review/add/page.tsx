@@ -1,13 +1,14 @@
 'use client'
-import React, { useState } from 'react';
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Textarea } from '@/components/ui/textarea';
-import { Label } from '@/components/ui/label';
-import { Star, X } from 'lucide-react';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
+import React, {useState} from 'react';
+import {Card, CardHeader, CardTitle, CardContent} from '@/components/ui/card';
+import {Button} from '@/components/ui/button';
+import {Textarea} from '@/components/ui/textarea';
+import {Label} from '@/components/ui/label';
+import {Star, X} from 'lucide-react';
+import {useForm} from 'react-hook-form';
+import {zodResolver} from '@hookform/resolvers/zod';
 import * as z from 'zod';
+import {useAddReviewMutation} from "@/lib/store/services/reviewApi";
 
 // Define the validation schema
 const reviewSchema = z.object({
@@ -32,16 +33,28 @@ type ReviewFormDataType = {
     photos?: File[]
 }
 
+type ErrorLocal = {
+    status: number;
+    data: {
+        message: string;
+        error: string;
+        statusCode: number;
+    }
+}
+
 const ReviewForm = () => {
+
+    const [addReview, {data, isLoading, isError, error, isSuccess}] = useAddReviewMutation()
     const [hoveredRating, setHoveredRating] = useState(0);
     const [previews, setPreviews] = useState<string[]>([]);
+    const [token, setToken] = useState('')
 
     const {
         register,
         handleSubmit,
         setValue,
         watch,
-        formState: { errors },
+        formState: {errors},
         reset
     } = useForm<ReviewFormDataType>({
         resolver: zodResolver(reviewSchema),
@@ -76,20 +89,38 @@ const ReviewForm = () => {
         setPreviews(prev => prev.filter((_, i) => i !== index));
     };
 
-    const onSubmit = (data: ReviewFormDataType) => {
-        console.log('Form data:', data);
-        // Here you would typically send the data to your server
-        reset(); // Reset form after successful submission
-        setPreviews([]); // Clear previews
+    const onSubmit = async (data: ReviewFormDataType) => {
+
+
+        localStorage.setItem('authToken', token);
+
+        try {
+            const formData = new FormData();
+            formData.append('text', data.content);
+            formData.append('rating', data.rating.toString());
+
+            if (data.photos) {
+                for (const photo of data.photos) {
+                    formData.append('images', photo);
+                }
+            }
+            await addReview(formData).unwrap();
+            reset();
+            setPreviews([]);
+        } catch (error) {
+            console.error('Error submitting the review:', error);
+        }
+
+
     };
 
     return (
-        <div className="min-h-screen w-full flex items-center justify-center p-4 font-nunito">
+        <div className="min-h-screen w-full flex flex-col items-center justify-center p-4 font-nunito ">
             <Card className="w-full max-w-2xl">
                 <CardHeader>
                     <CardTitle>Оставить отзыв</CardTitle>
                 </CardHeader>
-                <CardContent>
+                <CardContent className='space-y-6'>
                     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                         {/* Content field */}
                         <div className="space-y-2">
@@ -151,7 +182,7 @@ const ReviewForm = () => {
                                                     onClick={() => handleRemoveImage(index)}
                                                     className="absolute -top-2 -right-2 p-1 bg-red-500 rounded-full text-white"
                                                 >
-                                                    <X className="w-4 h-4" />
+                                                    <X className="w-4 h-4"/>
                                                 </button>
                                             </div>
                                         ))}
@@ -181,12 +212,20 @@ const ReviewForm = () => {
                         </div>
 
                         {/* Submit button */}
-                        <Button type="submit" className="w-full bg-tint hover:bg-none">
-                            Отправить отзыв
+                        <Button type="submit" disabled={isLoading} className="w-full bg-tint hover:bg-none">
+
+                            {isLoading ? 'Идет загрузка...' : 'Отправить отзыв'}
                         </Button>
                     </form>
+                    {/*{isLoading && <h1>Is loading...</h1>}*/}
+                    {/*{isError && <h1 className='text-red-500'>Ошибка: {error?.data?.message || error?.message || 'Что-то пошло не так'}</h1>}*/}
+                    {isError && <h1 className='text-red-500'>Ошибка: {(error as ErrorLocal).data.message}</h1>}
+                    {isSuccess && <h1 className='text-green-500'>Новый отзыв добавлен!</h1>}
+                    <Textarea placeholder='Token' value={token} onChange={(e) => setToken(e.target.value)}/>
+
                 </CardContent>
             </Card>
+
         </div>
     );
 };
